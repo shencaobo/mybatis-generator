@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- context 是逆向工程的主要配置信息 -->
+    <!-- id：配置名称 -->
+    <!-- targetRuntime：设置生成的文件的 mybatis 版本 -->
+
+    <context id="default" targetRuntime="MyBatis3">
+
+        <property name="javaFileEncoding" value='UTF-8'/>
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--        <plugin type="com.aua30.mybatis.tools.MyBatisPaginationPlugin"></plugin>-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--jdbc的数据库连接，以下为MySQL版本8以上的JDBC驱动-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.50.202:3306/portal_ipms?characterEncoding=UTF-8&amp;tinyInt1isBit=false"
+                        userId="root" password="deviskaifa">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+        <!--                        connectionURL="jdbc:mysql://192.168.50.202:3306/portal_ipms?characterEncoding=UTF-8&amp;tinyInt1isBit=false"-->
+        <!--                        userId="root" password="deviskaifa" />-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.greencloud.entity.mybatis" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mybatis" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="com.greencloud.dao.mybatis" targetProject="src/main/java" type="XMLMAPPER"/>
+
+        <table tableName="oxi_profile"/>
+    </context>
+</generatorConfiguration>
+
